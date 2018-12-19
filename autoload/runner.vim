@@ -48,7 +48,7 @@ function! s:Init(async) abort
       return 'AsyncRun '
     else
       echohl ErrorMsg
-      echom '[runner] Please install AsyncRun.vim to enable async running.'
+      echom '[runner] Please install asyncrun.vim to enable async running.'
       echohl NONE
       return '!'
     endif
