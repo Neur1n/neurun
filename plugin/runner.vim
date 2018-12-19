@@ -8,7 +8,8 @@ let g:loaded_runner = 1
 let s:save_cpo = &cpoptions
 set cpoptions&vim
 
-nmap <silent> <leader>rr :call runner#Run()<cr>
+nmap <silent> <leader>ra :call runner#Run(1)<cr>
+nmap <silent> <leader>rs :call runner#Run(0)<cr>
 
 let &cpoptions = s:save_cpo
 unlet s:save_cpo
