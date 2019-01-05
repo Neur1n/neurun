@@ -13,9 +13,14 @@ let s:start_stamp = 0
 
 "***************************************************************** {{{ Messages
 function! s:Highlight() abort
-  execute 'highlight RNormalMsg ctermfg=142 guifg=#b8bb26 cterm=bold gui=bold'
-  execute 'highlight RWarningMsg ctermfg=214 guifg=#fabd2f cterm=bold gui=bold'
-  execute 'highlight RErrorMsg ctermfg=167 guifg=#fb4934 cterm=bold gui=bold'
+  let l:palette = neur1n#palette#Palette()
+
+  call neur1n#palette#Highlight('RNormalMsg', l:palette.green[1], 'bg',
+        \ l:palette.green[0], 'bg', 'bold')
+  call neur1n#palette#Highlight('RWarningMsg', l:palette.yellow[1], 'bg',
+        \ l:palette.yellow[0], 'bg', 'bold')
+  call neur1n#palette#Highlight('RErrorMsg', l:palette.red[1], 'bg',
+        \ l:palette.red[0], 'bg', 'bold')
 endfunction
 
 function! s:EchoMsg(type, msg) abort
