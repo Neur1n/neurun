@@ -15,11 +15,14 @@ let s:start_stamp = 0
 function! s:Highlight() abort
   let l:palette = neur1n#palette#Palette()
 
-  call neur1n#palette#Highlight('RNormalMsg', l:palette.green[1], 'bg',
+  call neur1n#palette#Highlight('RNormalMsg',
+        \ l:palette.green[1], 'bg',
         \ l:palette.green[0], 'bg', 'bold')
-  call neur1n#palette#Highlight('RWarningMsg', l:palette.yellow[1], 'bg',
+  call neur1n#palette#Highlight('RWarningMsg',
+        \ l:palette.yellow[1], 'bg',
         \ l:palette.yellow[0], 'bg', 'bold')
-  call neur1n#palette#Highlight('RErrorMsg', l:palette.red[1], 'bg',
+  call neur1n#palette#Highlight('RErrorMsg',
+        \ l:palette.red[1], 'bg',
         \ l:palette.red[0], 'bg', 'bold')
 endfunction
 
