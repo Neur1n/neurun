@@ -14,25 +14,21 @@ let s:start_stamp = 0
 "***************************************************************** {{{ Messages
 function! s:Highlight() abort
   let l:palette = neur1n#palette#Palette()
-
-  call neur1n#palette#Highlight('RNormalMsg',
-        \ l:palette.green[1], 'bg',
-        \ l:palette.green[0], 'bg', 'bold')
-  call neur1n#palette#Highlight('RWarningMsg',
-        \ l:palette.yellow[1], 'bg',
-        \ l:palette.yellow[0], 'bg', 'bold')
-  call neur1n#palette#Highlight('RErrorMsg',
-        \ l:palette.red[1], 'bg',
-        \ l:palette.red[0], 'bg', 'bold')
+  call neur1n#palette#Highlight('RInfo', l:palette.blue, 'bg', 'bold')
+  call neur1n#palette#Highlight('RHint', l:palette.green, 'bg', 'bold')
+  call neur1n#palette#Highlight('RWarning', l:palette.yellow, 'bg', 'bold')
+  call neur1n#palette#Highlight('RError', l:palette.red, 'bg', 'bold')
 endfunction
 
 function! s:EchoMsg(type, msg) abort
-  if a:type ==# 'n'
-    echohl RNormalMsg
+  if a:type ==# 'i'
+    echohl RInfo
+  elseif a:type ==# 'h'
+    echohl RHint
   elseif a:type ==# 'w'
-    echohl RWarningMsg
+    echohl RWarning
   elseif a:type ==# 'e'
-    echohl RErrorMsg
+    echohl RError
   else
     echohl WarningMsg
   endif
@@ -79,7 +75,7 @@ function! s:JobStart(cmd) abort
   endif
 
   if s:curjob > 0
-    call s:EchoMsg('n', 'Running ')
+    call s:EchoMsg('i', 'Running ')
     let s:start_stamp = reltime()
     call s:QFMsg(join(a:cmd))
     " call s:DoAutoCmd('Start')
@@ -129,7 +125,7 @@ endfunction
 function! s:ErrCB(jobid, data, event) abort
   if !s:interrupt
     if v:shell_error == 0
-      call s:EchoMsg('n', 'Finished ✓')
+      call s:EchoMsg('h', 'Finished ✓')
     else
       call s:EchoMsg('e', 'Error ✘')
     endif
