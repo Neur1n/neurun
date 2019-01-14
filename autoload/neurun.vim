@@ -3,7 +3,7 @@ scriptencoding utf-8
 let s:save_cpo = &cpoptions
 set cpoptions&vim
 
-let s:autosave = get(g:, 'neurun.autosave', 2)  " 0: do not; 1: save current buffer; 2: save all
+let s:autosave = get(g:, 'neu.run.autosave', 2)  " 0: do not; 1: save current buffer; 2: save all
 let s:cb = neurun#cb#Callbacks()
 
 function! neurun#Run(...) abort
@@ -15,8 +15,8 @@ function! neurun#Run(...) abort
 
   if filereadable('MAINFILE')  " Workspace
     let l:ft = readfile('MAINFILE')[1]
-  elseif get(g:neurun.main, 'ft', '') !=# ''  " Global
-    let l:ft = g:neurun.main.ft
+  elseif get(g:neu.run.main, 'ft', '') !=# ''  " Global
+    let l:ft = g:neu.run.main.ft
   else
     let l:ft = &filetype
   endif

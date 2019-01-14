@@ -1,13 +1,18 @@
-scriptencoding utf-8
+
 
 function! neurun#cmd#python#Run() abort
-  if filereadable('MAINFILE')  " Workspace
-    let l:main = readfile('MAINFILE')[0]
-  " elseif get(g:, 'neurun.python.main', '') !=# ''  " Global
-  "   let l:main = g:runner.python.main
+  if get(g:neu.run.main, 'name', '') !=# ''
+    let l:main = g:neu.run.main.name
   else  " Current buffer
     let l:main = bufname('%')
   endif
+  " if filereadable('MAINFILE')  " Workspace
+  "   let l:main = readfile('MAINFILE')[0]
+  " elseif get(g:neu.run.main, 'name', '') !=# ''  " Global
+  "   let l:main = g:neu.run.main.name
+  " else  " Current buffer
+  "   let l:main = bufname('%')
+  " endif
 
   if has('unix')
     let l:python = 'python3'
