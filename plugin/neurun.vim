@@ -18,7 +18,8 @@ nnoremap <silent> <leader>nc :call neurun#qf#Clear()<CR>
 nnoremap <silent> <leader>nv :call neurun#qf#Toggle()<CR>
 nnoremap ZZ :call neurun#qf#Close()<CR>
 
-command! -complete=file -nargs=+ Neurun call neurun#Run(<f-args>)
+command! -complete=file -nargs=+ NeuRun call neurun#Run(<f-args>)
+command! -complete=file -nargs=+ NeuMark call neurun#config#MarkMain(<f-args>)
 
 let &cpoptions = s:save_cpo
 unlet s:save_cpo
