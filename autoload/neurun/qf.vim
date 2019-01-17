@@ -3,7 +3,7 @@ scriptencoding utf-8
 let s:qfopened = 0
 
 function! neurun#qf#Append(msg) abort
-  call setqflist([{'text': '[reurun] '.a:msg}], 'a')
+  call setqflist([{'text': '[neurun] '.a:msg}], 'a')
 endf
 
 function! neurun#qf#Clear() abort
