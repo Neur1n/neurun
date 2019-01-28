@@ -14,5 +14,7 @@ function! neurun#highlight#Init() abort
 endfunction
 
 function! neurun#highlight#Link(group) abort
-  execute 'highlight link '.a:group.' NR'.neurun#status#Get('type')
+  let l:status = neurun#status#Get('type')
+  let l:status = l:status ==# '' ? 'i' : l:status
+  execute 'highlight link '.a:group.' NR'.l:status
 endfunction
